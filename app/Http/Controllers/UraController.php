@@ -163,37 +163,9 @@ class uraController extends Controller
         $id = isset($_GET['id']) ? $_GET['id'] : 0;
         $status = $this->entity->find($id)->delete();
         $this->atualizaArquivo();
-        return response()->json(['status'=>$id]);
+
+        return json_encode(['status'=>$status]);
     }
-
-    // public function getExten($prioridade, $opts){
-    //     $pula = chr(13).chr(10);
-
-    //     switch($opts[0]){
-    //                       case 'ura': 
-    //                             $string = "exten => $prioridade,1,Goto(URA-$opts[1],s,1) $pula";
-    //                       break;
-
-    //                       case 'ramal':
-    //                             $string = "exten => $prioridade,1,AGI(Entrantes.php) $pula";                                
-    //                       break;
-
-    //                       case 'grupo':
-    //                             $string = "exten => $prioridade,1,AGI(Entrantes.php) $pula";                                                                
-    //                       break;
-
-    //                       case 'audio':
-    //                             $audio = new Audios;
-    //                             $audio = $audio->find($opts[1]);
-
-    //                             $string = "exten => $prioridade,1,Playback($audio->nome) $pula";                    
-    //                       break;
-    //     }
-
-    //     return $string;
-
-
-    // }
 
     public function geraHorarios($ura){
 

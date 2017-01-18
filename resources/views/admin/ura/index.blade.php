@@ -41,7 +41,6 @@ function showEditSaudacoes(){
           "url": "{{ route('datatables.saudacoes') }}",
           "type":"GET",
           "success": function(saudacoes){
-          console.log('saudacoes', saudacoes);
               saudacoes.data.map(function(el){
                    
                    switch(el.nome){
@@ -72,44 +71,44 @@ function showEditSaudacoes(){
 }
 
 function showEdit(id){
-      json = sessionStorage.getItem(id);
-      json = JSON.parse(json);      
-      
+      var json = JSON.parse(sessionStorage.getItem(id));      
+
       var result = $.map(json, function(val, key) {
                   var uniques = ['nome', 'playback', 'background', 'created_at', 'updated_at'];
                   var semana =  ['dom', 'seg', 'ter', 'qua', 'qui','sex','sab'];
 
                   if(uniques.indexOf(key) == -1 && semana.indexOf(key) == -1){
                       
-                      if(val != null && val != undefined){
+                      if(val){
                         values = val.toString().split(';');
-
                         $('select[name='+key+'_tipo]').val(values[0]);
-                        $('select[name='+key+'_destino]').val(values[1]);
+                        $('select[name='+key+'_destino]')
+                                                  .val(values[1])
+                                                  .find('.c_'+values[0])
+                                                  .show();
+
                       }
 
-                  } else {
+                  } 
+      });
 
-                    $("#nome").val(json.nome);
-                    $("#playback").val(json.playback);
-                    $("#background").val(json.background);
-
-                    $("input[name=ativ_saudacoes]").bootstrapSwitch('state', json.ativ_saudacoes, true);
-                    $("input[name=ativ_fechado]").bootstrapSwitch('state', json.ativ_fechado, true);
-
-                    $("input[name=hora_dom]").val(json.dom);
-                    $("input[name=hora_seg]").val(json.seg);
-                    $("input[name=hora_ter]").val(json.ter);
-                    $("input[name=hora_qua]").val(json.qua);
-                    $("input[name=hora_qui]").val(json.qui);
-                    $("input[name=hora_sex]").val(json.sex);
-                    $("input[name=hora_sab]").val(json.sab);
+      $("#nome").val(json.nome);
+      $("#playback").val(json.playback);
+      $("#background").val(json.background);
+      
+      $("input[name=ativ_saudacoes]").bootstrapSwitch('state', json.ativ_saudacoes, true);
+      $("input[name=ativ_fechado]").bootstrapSwitch('state', json.ativ_fechado, true);
+      
+      $("input[name=hora_dom]").val(json.dom || '00:00-00:00');
+      $("input[name=hora_seg]").val(json.seg || '00:00-00:00');
+      $("input[name=hora_ter]").val(json.ter || '00:00-00:00');
+      $("input[name=hora_qua]").val(json.qua || '00:00-00:00');
+      $("input[name=hora_qui]").val(json.qui || '00:00-00:00');
+      $("input[name=hora_sex]").val(json.sex || '00:00-00:00');
+      $("input[name=hora_sab]").val(json.sab || '00:00-00:00');
                     
-                  }
+
                   
-                  return;
-            });
-     
 
       $('#myModal').modal('toggle');
       
@@ -223,7 +222,6 @@ function erroVazio(){
 
 
 function populaSelects(){
-      console.log('populaSelects');
       //pega os ramais para os Selects do formulário
       $.ajax({
           "url": "{{ route('datatables.ramais') }}",
@@ -237,27 +235,29 @@ function populaSelects(){
                   ramais.data.map( function(el){ 
                         //se for URA pendura no campo no nome, 
                         if(el.aplicacao == '113'){
-                             count++;
-                             option = '<option class="c_ura" value='+el.id+'>'+el.nome+'</option>';
-                             
-                             $("#nome").append($(option));
+                            count++;
+                            var $option = $('<option class="c_ura" value='+el.id+'>'+el.nome+'</option>');
+                            $("#nome").append($option);
                         
                         //se não for ura pendura com uma classe diferente
                         //no campo de opções dos dígitos.
                         } else {
-
-                             option = '<option class="c_ramal" value='+el.id+'>'+el.nome+'</option>';
-
+                            var $option = $('<option class="c_ramal" value='+el.id+'>'+el.nome+'</option>');
+                            $option.hide();
+                            $('.select_opts').append($option);
                         }
 
-                        $(".select_opts").each(function(){
-                                $(this).append($(option));
-                                $(this).find('option').hide();
-                        });
-                        
-
                   });
-                  console.log(count);
+
+
+                  /*$(".select_opts").each(function(){
+                                opt = $(option);
+                                $(this).append(opt);
+                                opt.hide();
+                                $(this).find('option')
+                                       .not('.c_no')
+                                       .hide();
+                  });*/
 
                   if(count < 1)
                       erroVazio();
@@ -274,16 +274,20 @@ function populaSelects(){
           "url": "{{ route('datatables.voice_mail') }}",
           "type":"GET",
           "success": function(voice_mails){
-              console.log('voice_mails', voice_mails);
 
               if(voice_mails.data.length >= 1){
 
                   voice_mails.data.map(function(el){
-                      var option = '<option class="c_voice_mail" value='+el.id+'>'+el.nome+'</option>';
-                      $(".select_opts").each( function(){ $(this).append($(option)) 
-                          $(this).find('option').hide();
-                       });
+                      var $option = $('<option class="c_voice_mail" value='+el.id+'>'+el.nome+'</option>');
+                      $option.hide();
+                      $('.select_opts').append($option);
                   });
+
+                  
+                  
+                  /*$(".select_opts").each( function(){ $(this).append($(option)) 
+                          $(this).find('option').hide();
+                  });*/
               }
               
           }
@@ -293,18 +297,20 @@ function populaSelects(){
           "url": "{{ route('datatables.Grupos') }}",
           "type":"GET",
           "success": function(grupos){
-            console.log("grupos", grupos);
               if(grupos.data.length >= 1){
 
                   grupos.data.map(function(el){
-                      var option = '<option class="c_grupo" value='+el.id+'>'+el.numero+'</option>';
-                      $(".select_opts").each( function(){ 
+                      var $option = $('<option class="c_grupo" value='+el.id+'>'+el.numero+'</option>');
+                      $option.hide();
+                      $('.select_opts').append($option);
+                  });
+
+                  
+
+                  /*$(".select_opts").each( function(){ 
                         $(this).append($(option));
                            $(this).find('option').hide();
-                      });
-                     
-
-                  });
+                  });*/
               }
               
           }
@@ -315,23 +321,20 @@ function populaSelects(){
           "url": "{{ route('datatables.audios') }}",
           "type":"GET",
           "success": function(audios){
-              console.log("audios", audios);
               if(audios.data.length >= 1){
 
                   audios.data.map(function(el){
-                      var option = '<option class="c_audio" value='+el.id+'>'+el.nome+'</option>';
+                      var $option = $('<option class="c_audio" value='+el.id+'>'+el.nome+'</option>');
                       
-                      $("#background").append($(option));
-                      $("#playback").append($(option));
-
-                      $(".form_saudacoes").each(function(){
-                           $(this).append($(option));
-                         });
+                      $("#background").append($option);
+                      $("#playback").append($option);
+                      $(".form_saudacoes").append($option);
+                     
                     
-                      $(".select_opts").each( function(){ 
+                     /* $(".select_opts").each( function(){ 
                           $(this).append($(option)) 
                            $(this).find('option').hide();
-                      });
+                      }); */
                   });
               }
               

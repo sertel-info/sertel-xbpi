@@ -11,7 +11,7 @@ class ProfileRamal extends Model
     protected $fillable = [
             'name',
             'group_capture',
-            'group_captured',
+            'group_captured', 
             'receives_ddr',
             'receives',
             'collect_call',

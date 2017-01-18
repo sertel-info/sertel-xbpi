@@ -35,7 +35,7 @@
 					 	<td><p class='numeroGrande'>1</p></td> 
 					 	<td> 
 					 		<select class='select_tipo' name='dig_1_tipo'> 
-					 			<option value='no'> Nenhum</option>
+					 			<option value='no' selected> Nenhum</option>
 					 			<option value='ura'> URA </option> 
 					 			<option value='ramal'> Ramal </option> 
 					 			<option value='grupo'> Grupo </option> 
@@ -45,16 +45,17 @@
 					 			<option value='voice_mail'> Correio de Voz </option> 
 					 		</select>
 					 	</td> 
-					 	<td> <select class='select_opts'  name='dig_1_destino'>
+					 	<td> 
+					 		<select class='select_opts'  name='dig_1_destino'>
 					 		 		<option class='c_no' value='no'> Nenhum</option>
-					 		 </select>
+					 		</select>
 					    </td>
 				 </tr> 
 				 <tr> 
 					 	<td><p class='numeroGrande'>2</p></td> 
 					 	<td> 
 					 		<select class='select_tipo' id='' name='dig_2_tipo'> 
-					 			<option value='no'> Nenhum</option>
+					 			<option value='no' selected> Nenhum</option>
 					 			<option value='ura'> URA </option> 
 					 			<option value='ramal'> Ramal </option> 
 					 			<option value='grupo'> Grupo </option> 
@@ -73,7 +74,7 @@
 					 	<td ><p class='numeroGrande'>3</p></td> 
 					 	<td> 
 					 		<select class='select_tipo' id='' name='dig_3_tipo'> 
-					 			<option value='no'> Nenhum</option>
+					 			<option value='no' selected> Nenhum</option>
 					 			<option value='ura'> URA </option> 
 					 			<option value='ramal'> Ramal </option> 
 					 			<option value='grupo'> Grupo </option> 
@@ -92,7 +93,7 @@
 					 	<td><p class='numeroGrande'>4</p></td> 
 					 	<td> 
 					 		<select class='select_tipo' id='' name='dig_4_tipo'> 
-					 			<option value='no'> Nenhum</option>
+					 			<option value='no' selected> Nenhum</option>
 					 			<option value='ura'> URA </option> 
 					 			<option value='ramal'> Ramal </option> 
 					 			<option value='grupo'> Grupo </option> 
@@ -112,7 +113,7 @@
 					 	<td ><p class='numeroGrande'>5</p></td> 
 					 	<td> 
 					 		<select class='select_tipo' id='' name='dig_5_tipo'> 
-					 			<option value='no'> Nenhum</option>
+					 			<option value='no' selected> Nenhum</option>
 					 			<option value='ura'> URA </option> 
 					 			<option value='ramal'> Ramal </option> 
 					 			<option value='grupo'> Grupo </option> 
@@ -131,7 +132,7 @@
 					 	<td ><p class='numeroGrande'>6</p></td> 
 					 	<td> 
 					 		<select class='select_tipo' id='' name='dig_6_tipo'> 
-					 			<option value='no'> Nenhum</option>
+					 			<option value='no' selected> Nenhum</option>
 					 			<option value='ura'> URA </option> 
 					 			<option value='ramal'> Ramal </option> 
 					 			<option value='grupo'> Grupo </option> 
@@ -158,7 +159,7 @@
 						 	<td><p class='numeroGrande'>7</p></td> 
 						 	<td> 
 						 		<select class='select_tipo' id='' name='dig_7_tipo'> 
-					 			<option value='no'> Nenhum</option>
+					 			<option value='no' selected> Nenhum</option>
 					 			<option value='ura'> URA </option> 
 					 			<option value='ramal'> Ramal </option> 
 					 			<option value='grupo'> Grupo </option> 
@@ -177,7 +178,7 @@
 						 	<td ><p class='numeroGrande'>8</p></td> 
 						 	<td> 
 						 		<select class='select_tipo' id='' name='dig_8_tipo'> 
-					 			<option value='no'> Nenhum</option>
+					 			<option value='no' selected> Nenhum</option>
 					 			<option value='ura'> URA </option> 
 					 			<option value='ramal'> Ramal </option> 
 					 			<option value='grupo'> Grupo </option> 
@@ -196,7 +197,7 @@
 						 	<td ><p class='numeroGrande'>9</p></td> 
 						 	<td> 
 						 		<select class='select_tipo' id='' name='dig_9_tipo'> 
-						 			<option value='no'> Nenhum</option>
+						 			<option value='no' selected> Nenhum</option>
 						 			<option value='ura'> URA </option> 
 						 			<option value='ramal'> Ramal </option> 
 						 			<option value='grupo'> Grupo </option> 
@@ -216,7 +217,7 @@
 						 	<td ><p class='numeroGrande'>0</p></td> 
 						 	<td> 
 						 		<select class='select_tipo' id='' name='dig_0_tipo'> 
-						 			<option value='no'> Nenhum</option>
+						 			<option value='no' selected> Nenhum</option>
 						 			<option value='ura'> URA </option> 
 						 			<option value='ramal'> Ramal </option> 
 						 			<option value='grupo'> Grupo </option> 
@@ -234,7 +235,7 @@
 						 	<td ><p class='numeroGrande'>#</p></td> 
 						 	<td> 
 						 		<select class='select_tipo' id='' name='dig_tralha_tipo'> 
-						 			<option value='no'> Nenhum</option>
+						 			<option value='no' selected> Nenhum</option>
 						 			<option value='ura'> URA </option> 
 						 			<option value='ramal'> Ramal </option> 
 						 			<option value='grupo'> Grupo </option> 
@@ -253,7 +254,7 @@
 						 	<td ><p class='numeroGrande'>*</p></td> 
 						 	<td> 
 						 		<select class='select_tipo' id='' name='dig_asteristico_tipo'> 
-						 			<option value='no'> Nenhum</option>
+						 			<option value='no' selected> Nenhum</option>
 						 			<option value='ura'> URA </option> 
 						 			<option value='ramal'> Ramal </option> 
 						 			<option value='grupo'> Grupo </option> 

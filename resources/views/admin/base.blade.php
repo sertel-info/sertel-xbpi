@@ -153,7 +153,7 @@
                      <ul>
                            
                             <li>
-                                <a href=""><i class="glyphicon glyphicon-cog"></i>Gravações</a>
+                                <a href="{{route('admin.gravacoes.index')}}"><i class="glyphicon glyphicon-cog"></i>Gravações</a>
                             </li>
                             <li>
                                 <a href=""><i class="glyphicon glyphicon-cog"></i>Relatório</a>

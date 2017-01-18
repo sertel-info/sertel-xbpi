@@ -24,21 +24,21 @@ $(function(){
         function(isConfirm){
 
             var id = $this.data('id');
-            console.log('swal shown');
 
             if (isConfirm) {
-              console.log('confirmed');
                 $.get($this.attr('href')+'?id='+id, function(response){
+                    console.log(response);
                     var data = JSON.parse(response);
                     if(data.status){
                         $this.parents('tr').remove();
                         // $this.parents('[data-tr='+id+']').remove();
                         //swal("Deletado!", "Registro deletado com sucesso!.", "success");
                         swal({title: "Deletado!",
-                              text: "Deletado com sucesso!.",
-                              type: 'success',
+                              text:  "Deletado com sucesso!.",
+                              type:  'success',
                               timer: 2000,   showConfirmButton: false
                             });
+                        
                         if(resetIndexes){ //reseta os índices da table do hardware se existir a função
                           resetIndexes();
                         }
