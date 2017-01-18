@@ -1,0 +1,26 @@
+
+  -
+    "28631":
+      Type: FXS
+      IP: 172.16.0.221
+      CustomTonesProfiles: Profile1
+      "Replacer": 
+      Version: 
+      "ChannelGroups": 
+        -
+         "0-23 ": 
+           Type: FXS
+           Profile: FXS
+
+  -
+    "51813":
+      Type: FXO
+      IP: 172.16.0.220
+      CustomTonesProfiles: Profile1
+      "Replacer": 
+      Version: V2
+      "ChannelGroups": 
+        -
+         "0-7 ": 
+           Type: FXO
+           Profile: FXO
